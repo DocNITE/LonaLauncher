@@ -1,0 +1,40 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Client",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/Launcher.Client/bin/Debug/net7.0/Launcher.Client.dll",
+            "args": [],
+            //"cwd": "${workspaceFolder}/Launcher.Client",
+            "console": "externalTerminal",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Server",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/Launcher.Server/bin/Debug/net7.0/Launcher.Server.dll",
+            "args": [],
+            //"cwd": "${workspaceFolder}/Launcher.Server",
+            "console": "externalTerminal",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Server/Client",
+            "configurations": [
+                "Server",
+                "Client"
+            ],
+            "preLaunchTask": "build"
+        }
+    ]
+}
