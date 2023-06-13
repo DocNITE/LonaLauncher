@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.Client", "Launcher
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.Server", "Launcher.Server\Launcher.Server.csproj", "{13617A81-B598-4D6E-BB5F-DB8F595A753F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.Avalonia", "Launcher.Avalonia\Launcher.Avalonia.csproj", "{17BF8452-8900-4763-BDD6-D76517984386}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{13617A81-B598-4D6E-BB5F-DB8F595A753F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13617A81-B598-4D6E-BB5F-DB8F595A753F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13617A81-B598-4D6E-BB5F-DB8F595A753F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17BF8452-8900-4763-BDD6-D76517984386}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17BF8452-8900-4763-BDD6-D76517984386}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17BF8452-8900-4763-BDD6-D76517984386}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17BF8452-8900-4763-BDD6-D76517984386}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
