@@ -1,10 +1,19 @@
 ﻿using System.IO;
 using System.IO.Compression;
 using System.Net;
+using System.Reflection;
 using System.Runtime.Loader;
+using Launcher.Avalonia;
 using Launcher.Client;
 
-async void OnCommand(string buffer)
+//var DLL = Assembly.LoadFile(AppDomain.CurrentDomain.BaseDirectory + "Launcher.Avalonia.dll");
+
+// TODO: Надо сделать проверки на новые обновления лаунчера (Launcher.Avalonia) а там и обновления лаунчера
+// Run launcher
+MainProgram.Main(args);
+
+/*
+ * async void OnCommand(string buffer)
 {
     var param = buffer.Split(' ');
 
@@ -70,3 +79,28 @@ while (true)
     
     OnCommand(param);
 }
+ */
+
+/*
+ * using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        using var client = new HttpClient();
+
+        var response = await client.GetAsync("https://example.com/myfile.txt");
+
+        if (!response.IsSuccessStatusCode)
+        {
+            Console.WriteLine($"Failed to retrieve file, status code: {response.StatusCode}");
+            return;
+        }
+
+        var content = await response.Content.ReadAsStringAsync();
+        Console.WriteLine(content);
+    }
+ */

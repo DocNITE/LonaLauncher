@@ -5,14 +5,18 @@
         xmlns:views="clr-namespace:Launcher.Avalonia.UserInterfaces.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Launcher.Avalonia.MainWindow"
-        Title="Launcher.Avalonia"
-        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="AvaloniaLauncher"
         MinHeight="360"
-        MinWidth="600">
-        <DockPanel Name="MainContent">
+        MinWidth="600"
+        MaxHeight="500"
+        MaxWidth="800">
+        <StackPanel Orientation="Horizontal">
                 <!-- Main menu panel -->
-                <views:LonaMenu Width="200" HorizontalAlignment="Left">
-
+                <views:LonaMenu Name="LonaMenu" HorizontalAlignment="Left" VerticalAlignment="Center">
                 </views:LonaMenu>
-        </DockPanel>
+                <!-- Main Content -->
+                <StackPanel Name="MainContent">
+                        <views:LonaGame Name="LonaGame" IsVisible="False"></views:LonaGame>
+                </StackPanel>
+        </StackPanel>
 </Window>

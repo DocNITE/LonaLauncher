@@ -4,13 +4,14 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
             x:Class="Launcher.Avalonia.UserInterfaces.Views.LonaMenu"
-            Background="Aquamarine"
             Orientation="Vertical">
 
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-            <Button Name="GameButton" HorizontalAlignment="Center" VerticalAlignment="Center" Content="undefined"></Button>
-            <Button Name="ModsButton" HorizontalAlignment="Center" VerticalAlignment="Center" Content="undefined"></Button>
-            <Button Name="OptionButton" HorizontalAlignment="Center" VerticalAlignment="Center" Content="undefined"></Button>
-            <Button Name="AboutButton" HorizontalAlignment="Center" VerticalAlignment="Center" Content="undefined"></Button>
+            <Button Name="GameButton" Click="OnClick" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Игра"></Button>
+            <Button Name="ModsButton" Click="OnClick" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Моды"></Button>
+            <Button Name="OptionsButton" Click="OnClick" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Настройки"></Button>
+            <Button Name="AboutButton" Click="OnClick" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Справка"></Button>
+            <UserControl MinHeight="20"></UserControl>
+            <TextBlock Name="VersionLabel" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Text="Version: 0"></TextBlock>
         </StackPanel>
 </StackPanel>

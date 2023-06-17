@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="View\" />
+    <ProjectReference Include="..\Launcher.Avalonia\Launcher.Avalonia.csproj" />
   </ItemGroup>
 
 </Project>

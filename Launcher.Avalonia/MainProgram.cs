@@ -1,9 +1,10 @@
 ﻿using Avalonia;
 using System;
+using Microsoft.CodeAnalysis;
 
 namespace Launcher.Avalonia;
 
-class Program
+public class MainProgram
 {
     // Initialization code. Don't use any Avalonia, third-party APIs or any
     // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
