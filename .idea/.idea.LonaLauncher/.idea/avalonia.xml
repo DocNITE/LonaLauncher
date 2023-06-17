@@ -3,7 +3,9 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="Launcher.Avalonia/MainWindow.axaml" value="Launcher.Avalonia/Launcher.Avalonia.csproj" />
         <entry key="Launcher.Avalonia/UserInterfaces/Controls/lol.axaml" value="Launcher.Avalonia/Launcher.Avalonia.csproj" />
+        <entry key="Launcher.Avalonia/UserInterfaces/Views/Menu.axaml" value="Launcher.Avalonia/Launcher.Avalonia.csproj" />
       </map>
     </option>
   </component>
