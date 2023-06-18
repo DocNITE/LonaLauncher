@@ -8,6 +8,7 @@
             <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5">
                     <Button Name="GetGameButton"
+                            Click="OnClick"
                             IsEnabled="True"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Left"

@@ -11,7 +11,7 @@ public class HttpDownload : IDisposable
     private readonly string _downloadUrl;
     private readonly string _destinationFilePath;
 
-    private HttpClient _httpClient;
+    public HttpClient NetClient;
 
     public delegate void ProgressChangedHandler(long? totalFileSize, long totalBytesDownloaded, double? progressPercentage);
 
@@ -19,15 +19,15 @@ public class HttpDownload : IDisposable
 
     public HttpDownload(string downloadUrl, string destinationFilePath)
     {
+        NetClient = new HttpClient { Timeout = TimeSpan.FromDays(1) };
+        
         _downloadUrl = downloadUrl;
         _destinationFilePath = destinationFilePath;
     }
 
     public async Task StartDownload()
     {
-        _httpClient = new HttpClient { Timeout = TimeSpan.FromDays(1) };
-
-        using (var response = await _httpClient.GetAsync(_downloadUrl, HttpCompletionOption.ResponseHeadersRead))
+        using (var response = await NetClient.GetAsync(_downloadUrl, HttpCompletionOption.ResponseHeadersRead))
             await DownloadFileFromHttpResponseMessage(response);
     }
 
@@ -86,7 +86,7 @@ public class HttpDownload : IDisposable
 
     public void Dispose()
     {
-        _httpClient?.Dispose();
+        NetClient?.Dispose();
     }
 }
 

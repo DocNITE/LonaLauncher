@@ -9,6 +9,7 @@
         <entry key="Launcher.Avalonia/UserInterfaces/Views/LonaGame.axaml" value="Launcher.Client/Launcher.Client.csproj" />
         <entry key="Launcher.Avalonia/UserInterfaces/Views/LonaMenu.axaml" value="Launcher.Client/Launcher.Client.csproj" />
         <entry key="Launcher.Avalonia/UserInterfaces/Views/Menu.axaml" value="Launcher.Avalonia/Launcher.Avalonia.csproj" />
+        <entry key="Launcher.Avalonia/UserInterfaces/Windows/UpdateChecker.axaml" value="Launcher.Client/Launcher.Client.csproj" />
       </map>
     </option>
   </component>

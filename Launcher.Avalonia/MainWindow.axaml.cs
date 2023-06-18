@@ -24,6 +24,8 @@ public partial class MainWindow : Window
         
         // init settings
         Config.Load();
+        
+        // TODO: Auto update files/chekin'
     }
 
     private void OnChangeWindow(StackPanel panel)

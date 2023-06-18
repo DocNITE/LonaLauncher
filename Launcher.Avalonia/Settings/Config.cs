@@ -25,6 +25,11 @@ public sealed class Config
     {
         return (from field in _fields where field.Name == name select field.Data).FirstOrDefault();
     }
+    
+    public static Field? GetFieldObject(string name)
+    {
+        return (from field in _fields where field.Name == name select field).FirstOrDefault();
+    }
 
     public static void Load()
     {
