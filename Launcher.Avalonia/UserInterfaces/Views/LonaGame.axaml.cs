@@ -67,11 +67,15 @@ public partial class LonaGame : StackPanel
         // return if versions was equal
         if (content == Config.GetField("game_version"))
         {
+            this.FindControl<TextBlock>("InfoLabel").IsVisible = true;
+            this.FindControl<TextBlock>("InfoLabel").Text = "You already have actual version game!";
+            dirCache.Delete(true);
             return;
         }
         else
         {
             Config.GetFieldObject("game_version").Data = content;
+            Config.Save();
         }
         // enable some buttons
         this.FindControl<ProgressBar>("ProcessBar").IsEnabled = true;
