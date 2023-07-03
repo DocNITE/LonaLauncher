@@ -85,15 +85,19 @@ public sealed class Config
 
     public static void Model()
     {
+        var link = "https://github.com/DocNITE/LonaData/releases/download/0.8.1.1/";
+        
         var fields =
         new[] {
             new Field("game_version", "-1"),
+            new Field("patch_version", "-1"),
             new Field("launcher_version", "-1"),
             new Field("game_path", "./Game"),
-            new Field("game_url", "https://github.com/DocNITE/LonaData/releases/download/0.8.1.1/Game.zip"),
-            new Field("patch_url", "https://github.com/DocNITE/LonaData/releases/download/0.8.1.1/Patch.zip"),
-            new Field("game_version_url", "https://github.com/DocNITE/LonaData/releases/download/0.8.1.1/Game-Version.txt"),
-            new Field("launcher_version_url", "https://github.com/DocNITE/LonaData/releases/download/0.8.1.1/Launcher-Version.txt")
+            new Field("game_url", link + "Game.zip"),
+            new Field("patch_url", link + "Patch.zip"),
+            new Field("patch_version_url", link + "Patch-Version.txt"),
+            new Field("game_version_url", link + "Game-Version.txt"),
+            new Field("launcher_version_url", link + "Launcher-Version.txt")
         };
     }
 }
