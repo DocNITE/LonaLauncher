@@ -1,12 +1,8 @@
-using System;
-using System.IO;
-using System.IO.Compression;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.IO.Compression;
 
-namespace Launcher.Avalonia;
+namespace Launcher.LoaderAPI;
 
-public class HttpDownload : IDisposable
+public class HttpRequest : IDisposable
 {
     private readonly string _downloadUrl;
     private readonly string _destinationFilePath;
@@ -17,7 +13,7 @@ public class HttpDownload : IDisposable
 
     public event ProgressChangedHandler ProgressChanged;
 
-    public HttpDownload(string downloadUrl, string destinationFilePath)
+    public HttpRequest(string downloadUrl, string destinationFilePath)
     {
         NetClient = new HttpClient { Timeout = TimeSpan.FromDays(1) };
         

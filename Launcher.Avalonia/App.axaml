@@ -3,6 +3,7 @@
              x:Class="Launcher.Avalonia.App">
 
     <Application.Styles>
-        <FluentTheme Mode="Light"/>
+        <FluentTheme Mode="Dark"/>
+        <StyleInclude Source="/Themes/ThemeButton.axaml" />
     </Application.Styles>
 </Application>

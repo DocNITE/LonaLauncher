@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Launcher.Avalonia\Launcher.Avalonia.csproj" />
+    <ProjectReference Include="..\Launcher.LoaderAPI\Launcher.LoaderAPI.csproj" />
   </ItemGroup>
 
 </Project>

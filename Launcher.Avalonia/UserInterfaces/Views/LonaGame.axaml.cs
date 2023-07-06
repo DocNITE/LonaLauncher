@@ -1,11 +1,13 @@
 using System;
 using System.IO;
 using System.IO.Compression;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Launcher.Avalonia.Settings;
+using Launcher.LoaderAPI;
 
 namespace Launcher.Avalonia.UserInterfaces.Views;
 
@@ -31,52 +33,56 @@ public partial class LonaGame : StackPanel
         AvaloniaXamlLoader.Load(this);
     }
     
-    private void OnClick(object? sender, RoutedEventArgs e)
+    private async void OnClick(object? sender, RoutedEventArgs e)
     {
         //var btn = (Button)sender!;
         //OnUpdateStatus?.Invoke(GameStatus.Update);
         // create cache
 
-        if(!_isDownload)
-            DownloadProcess();
+        if (!_isDownload)
+        {
+            await DownloadProcess("game_url", "game_path", "game_version_url", "game_version");
+            await DownloadProcess("patch_url", "game_path", "patch_version_url", "patch_version");
+        }
     }
 
-    private async void DownloadProcess()
+    public async Task DownloadProcess(string url, string path, string versionUrl, string? currentVersion = "-1")
     {
         _isDownload = true;
         
-        var param1 = Config.GetField("game_url");
-        var param2 = Config.GetField("game_path");
-        var param3 = "GameCache";
+        var param1 = Config.GetField(url);
+        var param2 = Config.GetField(path);
+        var param3 = "Cache";
         
         var dirCache = new DirectoryInfo("./.cache");
         if (dirCache.Exists)
             dirCache.Delete(true);
         dirCache.Create();
-        var http = new HttpDownload(param1, "./.cache/" + param3);
+        var http = new HttpRequest(param1, "./.cache/" + param3);
         // get version game
-        var response = await http.NetClient.GetAsync(Config.GetField("game_version_url"));
+        var response = await http.NetClient.GetAsync(Config.GetField(versionUrl));
 
         if (!response.IsSuccessStatusCode)
         {
             Console.WriteLine($"Failed to retrieve file, status code: {response.StatusCode}");
+            _isDownload = false;
             return;
         }
 
         var content = await response.Content.ReadAsStringAsync();
+        content = content.Replace("\n", "");
         // return if versions was equal
-        if (content == Config.GetField("game_version"))
+        if (content == Config.GetField(currentVersion) || content == "-1")
         {
-            this.FindControl<TextBlock>("InfoLabel").IsVisible = true;
-            this.FindControl<TextBlock>("InfoLabel").Text = "You already have actual version game!";
+            //this.FindControl<TextBlock>("InfoLabel").IsVisible = true;
+            //this.FindControl<TextBlock>("InfoLabel").Text = "You already have actual version game!";
             dirCache.Delete(true);
+            _isDownload = false;
             return;
         }
-        else
-        {
-            Config.GetFieldObject("game_version").Data = content;
-            Config.Save();
-        }
+        Console.WriteLine("Update version: " + content);
+        Config.GetFieldObject(currentVersion).Data = content;
+        Config.Save();
         // enable some buttons
         this.FindControl<ProgressBar>("ProcessBar").IsEnabled = true;
         this.FindControl<TextBlock>("InfoLabel").IsVisible = true;
@@ -96,9 +102,8 @@ public partial class LonaGame : StackPanel
         await http.StartDownload();
         Console.WriteLine("Finished!");
         Console.WriteLine("Start process...");
-        Progress<ZipProgress> _dprogress;
-        _dprogress = new Progress<ZipProgress>();
-        _dprogress.ProgressChanged += (object sender, ZipProgress zipProgress) =>
+        Progress<ZipProgress> progress = new();
+        progress.ProgressChanged += (object sender, ZipProgress zipProgress) =>
         {
             this.FindControl<ProgressBar>("ProcessBar").Maximum = zipProgress.Total;
             this.FindControl<ProgressBar>("ProcessBar").Value = zipProgress.Processed;
@@ -108,7 +113,7 @@ public partial class LonaGame : StackPanel
         using (FileStream zipToOpen = new FileStream("./.cache/"+param3, FileMode.Open))
         {
             ZipArchive zipp = new ZipArchive(zipToOpen);
-            zipp.ExtractToDirectory(param2, _dprogress);
+            zipp.ExtractToDirectory(param2, progress);
         }
         dirCache.Delete(true);
         // disable some buttons

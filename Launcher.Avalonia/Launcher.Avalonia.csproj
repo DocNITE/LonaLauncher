@@ -23,4 +23,8 @@
     <ItemGroup>
       <Folder Include="UserInterfaces\Controls\" />
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Launcher.LoaderAPI\Launcher.LoaderAPI.csproj" />
+    </ItemGroup>
 </Project>

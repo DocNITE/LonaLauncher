@@ -4,7 +4,7 @@ using System.Net;
 using System.Reflection;
 using System.Runtime.Loader;
 using Launcher.Avalonia;
-using Launcher.Client;
+using Launcher.LoaderAPI;
 
 //var DLL = Assembly.LoadFile(AppDomain.CurrentDomain.BaseDirectory + "Launcher.Avalonia.dll");
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -51,7 +52,10 @@ public sealed class Config
             if (field == null) break;
             
             var values = field.Split(_seperator);
-            var fieldObj = new Field(values[0], values[1]);
+            if (values.Length >= 2)
+            {
+                var fieldObj = new Field(values[0], values[1]);
+            }
         }
     }
     
