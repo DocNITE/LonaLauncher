@@ -5,18 +5,37 @@
         xmlns:views="clr-namespace:Launcher.Avalonia.UserInterfaces.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Launcher.Avalonia.MainWindow"
-        Title="AvaloniaLauncher"
+        Title="LonaRPG Launcher (pre-alpha)"
         MinHeight="360"
         MinWidth="600"
         MaxHeight="500"
         MaxWidth="800">
-        <StackPanel Orientation="Horizontal">
-                <!-- Main menu panel -->
-                <views:LonaMenu Name="LonaMenu" HorizontalAlignment="Left" VerticalAlignment="Center">
-                </views:LonaMenu>
-                <!-- Main Content -->
-                <StackPanel Name="MainContent">
-                        <views:LonaGame Name="LonaGame" IsVisible="False"></views:LonaGame>
-                </StackPanel>
-        </StackPanel>
+        <Window.Background>
+                <ImageBrush Source="Assets/bg_sybaris.png" Stretch="Fill"/>
+        </Window.Background>
+        <Grid Column="0" Row="0">
+              <Grid ZIndex="0" Row="0" Column="0">
+                      <DockPanel>
+                              <Image Source="Assets/logo.png"
+                                     Width="391" Height="57"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Top"
+                                     Margin="10"/>
+                      </DockPanel>
+              </Grid>
+                <Grid ZIndex="1" Row="0" Column="0">
+                        <StackPanel Orientation="Horizontal">
+                                <!-- Main menu panel -->
+                                <views:LonaMenu Name="LonaMenu" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                </views:LonaMenu>
+                                <!-- Main Content -->
+                                <StackPanel Name="MainContent">
+                                        <views:LonaGame Name="LonaGame" IsVisible="False"></views:LonaGame>
+                                </StackPanel>
+                        </StackPanel> 
+                </Grid>
+                <Grid ZIndex="2" Row="0" Column="0">
+                  
+                </Grid>
+        </Grid>
 </Window>

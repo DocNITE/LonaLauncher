@@ -1,8 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- Add Styles Here -->
-    <Style Selector="Button:pointerover">
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentColor2}" />
-    </Style>
+     <Style Selector="Button:pointerover">
+        <Setter Property="Background" Value="{DynamicResource ThemeBackgroundColor}" />
+     </Style> 
 </Styles>
