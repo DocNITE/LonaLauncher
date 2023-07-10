@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.Client", "Launcher.Client\Launcher.Client.csproj", "{39695B8F-AD49-4664-9F3D-6ABCE2C7704E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.Bootstrap", "Launcher.Bootstrap\Launcher.Bootstrap.csproj", "{39695B8F-AD49-4664-9F3D-6ABCE2C7704E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.Server", "Launcher.Server\Launcher.Server.csproj", "{13617A81-B598-4D6E-BB5F-DB8F595A753F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.Avalonia", "Launcher.Avalonia\Launcher.Avalonia.csproj", "{17BF8452-8900-4763-BDD6-D76517984386}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.LoaderAPI", "Launcher.LoaderAPI\Launcher.LoaderAPI.csproj", "{81EB5E95-D97A-4CB1-96FF-7516B22BB2C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.Client", "Launcher.Client\Launcher.Client.csproj", "{6AAF69A3-0DA6-40F1-9244-48FACF62FF13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher.CLI", "Launcher.CLI\Launcher.CLI.csproj", "{CBA9FA4B-A9EA-41A4-A2BC-83849F8DDBB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +40,13 @@ Global
 		{81EB5E95-D97A-4CB1-96FF-7516B22BB2C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81EB5E95-D97A-4CB1-96FF-7516B22BB2C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81EB5E95-D97A-4CB1-96FF-7516B22BB2C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AAF69A3-0DA6-40F1-9244-48FACF62FF13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AAF69A3-0DA6-40F1-9244-48FACF62FF13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AAF69A3-0DA6-40F1-9244-48FACF62FF13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AAF69A3-0DA6-40F1-9244-48FACF62FF13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBA9FA4B-A9EA-41A4-A2BC-83849F8DDBB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBA9FA4B-A9EA-41A4-A2BC-83849F8DDBB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBA9FA4B-A9EA-41A4-A2BC-83849F8DDBB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBA9FA4B-A9EA-41A4-A2BC-83849F8DDBB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

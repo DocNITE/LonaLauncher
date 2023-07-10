@@ -1,4 +1,4 @@
-namespace Launcher.Avalonia.Settings;
+namespace Launcher.Client.Settings;
 
 public class Field
 {

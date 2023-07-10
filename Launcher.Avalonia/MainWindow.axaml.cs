@@ -1,7 +1,8 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Launcher.Avalonia.Settings;
+using Launcher.Avalonia;
+using Launcher.Client.Settings;
 
 namespace Launcher.Avalonia;
 

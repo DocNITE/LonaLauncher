@@ -6,7 +6,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
-using Launcher.Avalonia.Settings;
+using Launcher.Client.Settings;
 using Launcher.LoaderAPI;
 
 namespace Launcher.Avalonia.UserInterfaces.Views;

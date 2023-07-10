@@ -6,7 +6,7 @@ using System.Linq;
 using System.Xml.Linq;
 using Microsoft.CodeAnalysis;
 
-namespace Launcher.Avalonia.Settings;
+namespace Launcher.Client.Settings;
 
 public sealed class Config
 {

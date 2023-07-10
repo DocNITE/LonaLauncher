@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Launcher.LoaderAPI\Launcher.LoaderAPI.csproj" />
-  </ItemGroup>
-
 </Project>
