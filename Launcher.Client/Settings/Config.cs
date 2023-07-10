@@ -31,6 +31,11 @@ public sealed class Config
     {
         return (from field in _fields where field.Name == name select field).FirstOrDefault();
     }
+    
+    public static Field? GetFieldObjectWithVersion(string groupName)
+    {
+        return (from item in _fields let nameSp = item.Name.Split("_") where nameSp.Length == 2 && nameSp[0] == groupName && nameSp[1] == "version" select item).FirstOrDefault();
+    }
 
     public static void Load()
     {
