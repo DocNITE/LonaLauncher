@@ -4,11 +4,11 @@ using Launcher.LoaderAPI;
 
 namespace Launcher.Client.Net;
 
-public static class HttpManager
+public static class DownloadManager
 {
     private static bool _isDownload = false;
     
-    public static async Task DownloadProcess(string url, string path, string versionUrl, string? currentVersion = "-1")
+    public static async Task DownloadGameData(string url, string path, string versionUrl, string? currentVersion = "-1")
     {
         _isDownload = true;
         
