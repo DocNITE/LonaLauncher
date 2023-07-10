@@ -8,4 +8,5 @@ LonaRPG Launcher project, base on C# for full OS implemintation.
 - [x] Patch support
 - [ ] Running game
 - [ ] Change game path
+- [ ] Mod's support
 
