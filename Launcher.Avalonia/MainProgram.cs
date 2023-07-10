@@ -1,6 +1,5 @@
 ﻿using Avalonia;
 using System;
-using Microsoft.CodeAnalysis;
 
 namespace Launcher.Avalonia;
 

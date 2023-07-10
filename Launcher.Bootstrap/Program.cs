@@ -2,12 +2,15 @@
 using System.IO.Compression;
 using System.Net;
 using System.Reflection;
-using System.Runtime.Loader;
-using Launcher.Avalonia;
 using Launcher.LoaderAPI;
 
-var assembly = Assembly.LoadFile(AppDomain.CurrentDomain.BaseDirectory + "Launcher.Avalonia.dll");
-var myType = assembly.GetType("Launcher.Avalonia.MainProgram");
+// Check main app arguments. That's need, if we wanna load custom DLL
+var dllName = "Launcher.Avalonia";
+if (args.Length >= 1)
+    dllName = args[0];
+        
+var assembly = Assembly.LoadFile(AppDomain.CurrentDomain.BaseDirectory + $"{dllName}.dll");
+var myType = assembly.GetType( $"{dllName}.MainProgram");
 
 // Check if the type was found
 if (myType == null)
