@@ -26,7 +26,6 @@
     
     <ItemGroup>
       <Folder Include="Assets\" />
-      <Folder Include="UserInterfaces\Controls\" />
     </ItemGroup>
 
     <ItemGroup>

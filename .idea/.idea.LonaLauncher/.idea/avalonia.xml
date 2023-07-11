@@ -8,6 +8,7 @@
         <entry key="Launcher.Avalonia/MainWindow.axaml" value="Launcher.Bootstrap/Launcher.Bootstrap.csproj" />
         <entry key="Launcher.Avalonia/Themes/ThemeButton.axaml" value="Launcher.Bootstrap/Launcher.Bootstrap.csproj" />
         <entry key="Launcher.Avalonia/Themes/ThemeResource.axaml" value="Launcher.Client/Launcher.Client.csproj" />
+        <entry key="Launcher.Avalonia/UserInterfaces/Controls/PanelWidget.axaml" value="Launcher.Bootstrap/Launcher.Bootstrap.csproj" />
         <entry key="Launcher.Avalonia/UserInterfaces/Controls/lol.axaml" value="Launcher.Avalonia/Launcher.Avalonia.csproj" />
         <entry key="Launcher.Avalonia/UserInterfaces/Views/LonaGame.axaml" value="Launcher.Client/Launcher.Client.csproj" />
         <entry key="Launcher.Avalonia/UserInterfaces/Views/LonaMenu.axaml" value="Launcher.Client/Launcher.Client.csproj" />

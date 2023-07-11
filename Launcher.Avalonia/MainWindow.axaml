@@ -3,6 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:Launcher.Avalonia.UserInterfaces.Views"
+        xmlns:controls="clr-namespace:Launcher.Avalonia.UserInterfaces.Controls"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Launcher.Avalonia.MainWindow"
         Title="LonaRPG Launcher (pre-alpha)"
@@ -26,6 +27,7 @@
                 <Grid ZIndex="1" Row="0" Column="0">
                         <StackPanel Orientation="Horizontal">
                                 <!-- Main menu panel -->
+                                <!-- <controls:PanelWidget Width="100" Height="100"></controls:PanelWidget> -->
                                 <views:LonaMenu Name="LonaMenu" HorizontalAlignment="Left" VerticalAlignment="Center">
                                 </views:LonaMenu>
                                 <!-- Main Content -->
