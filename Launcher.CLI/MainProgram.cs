@@ -1,4 +1,5 @@
-﻿using System.Net.Mime;
+﻿using System.Diagnostics;
+using System.Net.Mime;
 using System.Reflection;
 using Launcher.Client;
 using Launcher.Client.Settings;
@@ -31,8 +32,13 @@ public class MainProgram
         }
     }
 
+    private static bool _cmdHandled = false;
     private static async void CommandHandler(string param)
     {
+        if (_cmdHandled)
+            return;
+        _cmdHandled = true;
+        
         var cmd = param.Split(' ');
 
         switch (cmd[0])
@@ -72,6 +78,32 @@ public class MainProgram
                 _progress = null;
                 
                 break;
+            case "play":
+                const string exePath = "/Game.exe";
+                var programPath = Config.GetField("game_path") + exePath;
+
+                Logger.Info($"Start the game...");
+                
+                if (!File.Exists(programPath))
+                {
+                    Logger.Warn($"Cannot find '{programPath}'.");
+                    // TODO: So, if we cannot find the game - we can trye
+                    // to run auto-update or something... Idk...
+                    return;
+                }
+                
+                var startInfo = new ProcessStartInfo
+                {
+                    FileName = programPath,
+                    UseShellExecute = false
+                };
+        
+                var process = new Process { StartInfo = startInfo };
+                process.Start();
+
+                Logger.Info($"File has been running!");
+                
+                break;
             case "help":
                 var commandsText =
                     "Command list:\n" +
@@ -83,6 +115,8 @@ public class MainProgram
                 Logger.Error("Not found command!");
                 break;
         }
+        
+        _cmdHandled = false;
     }
 
     private static void OnDownloadProgress(DownloadProgress downloadProgress)
