@@ -4,12 +4,20 @@ using System.Net;
 using System.Reflection;
 using Launcher.LoaderAPI;
 
+#if !DEBUG
 var bootHttpManager = new HttpManager();
 
 var launcherVersion = Environment.GetEnvironmentVariable("LONA_LAUNCHER_VERSION", EnvironmentVariableTarget.User) ?? "0";
 var launcherVersionUrl = "https://raw.githubusercontent.com/DocNITE/LonaLauncher/main/Launcher.Version.txt";
 var launcherContentUrl = "https://raw.githubusercontent.com/DocNITE/LonaLauncher/main/Launcher.Content.zip";
-await bootHttpManager.DownloadCoreFile("launcher", launcherContentUrl, "./", launcherVersionUrl, launcherVersion);
+
+bootHttpManager.OnChangeFileVersion += (group, version) => 
+{
+    Environment.SetEnvironmentVariable("LONA_LAUNCHER_VERSION", version, EnvironmentVariableTarget.User);
+};
+
+await bootHttpManager.DownloadCoreFile("launcher", launcherContentUrl, AppDomain.CurrentDomain.BaseDirectory, launcherVersionUrl, launcherVersion);
+#endif
 
 try
 {

@@ -4,6 +4,12 @@ namespace Launcher.LoaderAPI;
 
 public partial class HttpManager
 {
+    public Action? OnExistingFile;
+    public Action<string, string>? OnChangeFileVersion;
+    public Action<DownloadProgress>? OnDownloadProgress;
+    public Action<ZipProgress>? OnZipExtractProgress;
+    public Action? OnDownloadComplete;
+
     public async Task DownloadCoreFile(string groupFiles, string url, string path, string versionUrl, string? currentVersion = "-1")
     {
         if (_isDownload)
