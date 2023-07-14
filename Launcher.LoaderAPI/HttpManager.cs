@@ -11,7 +11,8 @@ public class HttpManager
     public static Action? OnDownloadComplete;
 
     private static bool _isDownload = false;
-    private const string FolderName = "Cache";
+    public static string CacheFileName = "Cache";
+    public static string CacheDirectory = "./.cache";
     
     public static async Task DownloadCoreFile(string groupFiles, string url, string path, string versionUrl, string? currentVersion = "-1")
     {
@@ -20,12 +21,12 @@ public class HttpManager
         
         _isDownload = true;
 
-        var dirCache = new DirectoryInfo("./.cache");
+        var dirCache = new DirectoryInfo(CacheDirectory);
         if (dirCache.Exists)
             dirCache.Delete(true);
         dirCache.Create();
         
-        var http = new HttpDownloader(url, "./.cache/" + FolderName);
+        var http = new HttpDownloader(url, CacheDirectory + CacheFileName);
       
         var response = await http.NetClient.GetAsync(versionUrl);
 
@@ -60,7 +61,7 @@ public class HttpManager
             OnZipExtractProgress?.Invoke(zipProgress);
         };
         
-        await using (var zipToOpen = new FileStream("./.cache/"+FolderName, FileMode.Open))
+        await using (var zipToOpen = new FileStream(CacheDirectory + CacheFileName, FileMode.Open))
         {
             var zip = new ZipArchive(zipToOpen);
             zip.ExtractToDirectory(path, progress);
