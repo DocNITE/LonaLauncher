@@ -45,6 +45,13 @@
                 "Client"
             ],
             "preLaunchTask": "build"
+        }, 
+        {
+            "name": "CLI Build->RUN",
+            "configurations": [
+                "CLI"
+            ],
+            "preLaunchTask": "build"
         }
     ]
 }

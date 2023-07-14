@@ -1,4 +1,6 @@
-﻿/*
+﻿Console.WriteLine("Lol?");
+
+/*
 using System.Net;
 using System.Net.Sockets;
  

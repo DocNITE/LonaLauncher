@@ -16,7 +16,7 @@ public partial class HttpManager
             dirCache.Delete(true);
         dirCache.Create();
         
-        var http = new HttpDownloader(url, CacheDirectory + CacheFileName);
+        var http = new HttpDownloader(url, CacheDirectory + "/" + CacheFileName);
       
         var response = await http.NetClient.GetAsync(versionUrl);
 
@@ -51,7 +51,7 @@ public partial class HttpManager
             OnZipExtractProgress?.Invoke(zipProgress);
         };
         
-        await using (var zipToOpen = new FileStream(CacheDirectory + CacheFileName, FileMode.Open))
+        await using (var zipToOpen = new FileStream(CacheDirectory + "/" + CacheFileName, FileMode.Open))
         {
             var zip = new ZipArchive(zipToOpen);
             zip.ExtractToDirectory(path, progress);
