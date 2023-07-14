@@ -2,6 +2,16 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "CLI",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/Launcher.Bootstrap/bin/Debug/net7.0/Launcher.Bootstrap.dll",
+            "args": ["Launcher.CLI"],
+            //"cwd": "${workspaceFolder}/Launcher.Client",
+            "console": "externalTerminal",
+            "stopAtEntry": false
+        },
+        {
             "name": "Client",
             "type": "coreclr",
             "request": "launch",
