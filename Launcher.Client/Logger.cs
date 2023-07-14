@@ -17,7 +17,7 @@ public class Logger
         if (message == null)
             return;
         
-        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.ForegroundColor = color;
         Console.Write(idx);
         Console.ForegroundColor = ConsoleColor.Gray;
         Console.Write(message);

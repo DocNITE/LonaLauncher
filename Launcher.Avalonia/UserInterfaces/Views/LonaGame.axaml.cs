@@ -6,6 +6,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Launcher.Client;
 using Launcher.Client.Settings;
 using Launcher.LoaderAPI;
 
@@ -34,16 +35,15 @@ public partial class LonaGame : StackPanel
     
     private async void OnClick(object? sender, RoutedEventArgs e)
     {
-        //var btn = (Button)sender!;
-        //OnUpdateStatus?.Invoke(GameStatus.Update);
-        // create cache
-
        
-        await HttpManager.DownloadCoreFile(Config.GetField("game_url"), 
+        await Static.HttpManager.DownloadCoreFile("game",
+            Config.GetField("game_url"), 
             Config.GetField("game_path"),
             Config.GetField("game_version_url"),
             Config.GetField("game_version"));
-        await HttpManager.DownloadCoreFile(Config.GetField("patch_url"), 
+        
+        await Static.HttpManager.DownloadCoreFile("patch",
+            Config.GetField("patch_url"), 
             Config.GetField("game_path"),
             Config.GetField("patch_version_url"),
             Config.GetField("patch_version"));

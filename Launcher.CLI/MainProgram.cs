@@ -46,15 +46,15 @@ public class MainProgram
             case "update":
                 _progress = new ProgressBar();
                 
-                HttpManager.OnDownloadProgress += OnDownloadProgress;
-                HttpManager.OnDownloadComplete += OnDownloadComplete;
-                HttpManager.OnExistingFile += OnExistingFile;
-                HttpManager.OnChangeFileVersion += OnChangeFileVersion;
-                HttpManager.OnZipExtractProgress += OnZipExtractProgress;
+                Static.HttpManager.OnDownloadProgress += OnDownloadProgress;
+                Static.HttpManager.OnDownloadComplete += OnDownloadComplete;
+                Static.HttpManager.OnExistingFile += OnExistingFile;
+                Static.HttpManager.OnChangeFileVersion += OnChangeFileVersion;
+                Static.HttpManager.OnZipExtractProgress += OnZipExtractProgress;
 
                 Logger.Info("Start downloading game files...");
                 
-                await HttpManager.DownloadCoreFile("game",
+                await Static.HttpManager.DownloadCoreFile("game",
                 Config.GetField("game_url"), 
                     Config.GetField("game_path"),
                     Config.GetField("game_version_url"),
@@ -62,17 +62,17 @@ public class MainProgram
                 
                 Logger.Info("Start downloading patch archive...");
                 
-                await HttpManager.DownloadCoreFile("patch",
+                await Static.HttpManager.DownloadCoreFile("patch",
                     Config.GetField("patch_url"), 
                     Config.GetField("game_path"),
                     Config.GetField("patch_version_url"),
                     Config.GetField("patch_version"));
                 
-                HttpManager.OnDownloadProgress -= OnDownloadProgress;
-                HttpManager.OnDownloadComplete -= OnDownloadComplete;
-                HttpManager.OnExistingFile -= OnExistingFile;
-                HttpManager.OnChangeFileVersion -= OnChangeFileVersion;
-                HttpManager.OnZipExtractProgress -= OnZipExtractProgress;
+                Static.HttpManager.OnDownloadProgress -= OnDownloadProgress;
+                Static.HttpManager.OnDownloadComplete -= OnDownloadComplete;
+                Static.HttpManager.OnExistingFile -= OnExistingFile;
+                Static.HttpManager.OnChangeFileVersion -= OnChangeFileVersion;
+                Static.HttpManager.OnZipExtractProgress -= OnZipExtractProgress;
                 
                 _progress.Dispose();
                 _progress = null;
