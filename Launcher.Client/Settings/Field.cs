@@ -14,13 +14,32 @@ public class Field
     public string Data
     {
         get => _data;
-        set { _data = value; }
+        set 
+        { 
+            Environment.SetEnvironmentVariable(Config.GetEnvironmentName(Name), 
+                                            value, 
+                                            EnvironmentVariableTarget.User);
+            _data = value;
+        }
     }
 
-    public Field(string name, string data)
+    public Field(string name, string data, bool restored = false)
     {
-        _name = name;
-        _data = data;
+        Name = name;
+        
+        var value = Environment.GetEnvironmentVariable(Config.GetEnvironmentName(Name), 
+                                                    EnvironmentVariableTarget.User);
+        if (value != null)
+        {
+            if (!restored)
+                Data = value;
+            else 
+                Data = data;
+        } 
+        else 
+        {
+            Data = data;
+        }
 
         Config.AddField(this);
     }

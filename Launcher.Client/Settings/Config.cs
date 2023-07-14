@@ -10,12 +10,11 @@ namespace Launcher.Client.Settings;
 
 public sealed class Config
 {
-    public const string SavePath = ".data/";
-    public const string FileName = "settings.txt";
+    private const string ConfigFieldIdx = "LONA_LAUNCHER_CFG";
+    private const string ConfigVersion = "1";
+    private const string ConfigVersionIdx = "VERSION";
 
-    private const char _seperator = '=';
-    private const char _nextline = '\n';
-    private static List<Field> _fields = new List<Field>();
+    private static readonly List<Field> _fields = new();
 
     public static void AddField(Field field)
     {
@@ -37,76 +36,43 @@ public sealed class Config
         return (from item in _fields let nameSp = item.Name.Split("_") where nameSp.Length == 2 && nameSp[0] == groupName && nameSp[1] == "version" select item).FirstOrDefault();
     }
 
+    public static string GetEnvironmentName(string fieldName) => ConfigFieldIdx + "_" + fieldName;
+
     public static void Load()
     {
-        var dir = new DirectoryInfo(SavePath);
+        var restoreData = true;
+        /* For now no need to config check. TODO: Need to make config update
+        var version = Environment.GetEnvironmentVariable(GetEnvironmentName(ConfigVersionIdx), EnvironmentVariableTarget.User);
+        var restoreData = false;
 
-        if (!dir.Exists)
+        if (version != null)
         {
-            Model(); // Generate new settings
-            Save();
-            return;
-        }
-        
-        var fs = File.Open(SavePath + FileName, FileMode.Open);
-        var sr = new StreamReader(fs);
-
-        while (true)
-        {
-            var field = sr.ReadLine();
-            if (field == null) break;
-            
-            var values = field.Split(_seperator);
-            if (values.Length >= 2)
+            if (version != ConfigVersion)
             {
-                var fieldObj = new Field(values[0], values[1]);
+                restoreData = true;
+                Environment.SetEnvironmentVariable(GetEnvironmentName(ConfigVersionIdx), ConfigVersion, EnvironmentVariableTarget.User);
             }
-        }
-    }
-    
-    public static void Save()
-    {
-        var dir = new DirectoryInfo(SavePath);
-        
-        if (dir.Exists)
-            dir.Delete(true);
-        
-        dir.Create();
-        var fs = File.Create(SavePath + FileName);
-        var sr = new StreamWriter(fs);
-        
-        if (File.Exists(SavePath + FileName))
+        } 
+        else 
         {
-            Console.WriteLine("File settings is created.");
-            foreach (var field in _fields)
-            {
-                Console.WriteLine("Written field: " + field.Name);
-                sr.WriteLine(field.Name + _seperator + field.Data);
-            }
-            sr.Close();
-            fs.Close();
+            restoreData = true;
+            Environment.SetEnvironmentVariable(GetEnvironmentName(ConfigVersionIdx), ConfigVersion, EnvironmentVariableTarget.User);
         }
-        else
-        {
-            Console.WriteLine("File settings is not created.");
-        }
-    }
+        */
 
-    public static void Model()
-    {
+        // WARNING: MONKEY CODE
+        // Yeah, in better way - we should use some generic spaces (not hardcode).
         var link = "https://github.com/DocNITE/LonaData/releases/download/0.8.1.1/";
-        
-        var fields =
+
+        _ =
         new[] {
-            new Field("game_version", "-1"),
-            new Field("patch_version", "-1"),
-            new Field("launcher_version", "-1"),
-            new Field("game_path", "./Game"),
-            new Field("game_url", link + "Game.zip"),
-            new Field("patch_url", link + "Patch.zip"),
-            new Field("patch_version_url", link + "Patch-Version.txt"),
-            new Field("game_version_url", link + "Game-Version.txt"),
-            new Field("launcher_version_url", link + "Launcher-Version.txt")
+            new Field("game_version", "-1", restoreData),
+            new Field("patch_version", "-1", restoreData),
+            new Field("game_path", "./Game", restoreData),
+            new Field("game_url", link + "Game.zip", restoreData),
+            new Field("patch_url", link + "Patch.zip", restoreData),
+            new Field("patch_version_url", link + "Patch-Version.txt", restoreData),
+            new Field("game_version_url", link + "Game-Version.txt", restoreData),
         };
     }
 }

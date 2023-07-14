@@ -135,7 +135,6 @@ public class MainProgram
             return;
         
         field.Data = version;
-        Config.Save();
         
         Logger.Info("Changed version game...");
     }
