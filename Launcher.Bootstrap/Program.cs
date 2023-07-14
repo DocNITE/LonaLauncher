@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.IO.Compression;
-using System.Net;
-using System.Reflection;
+﻿using System.Reflection;
 using Launcher.LoaderAPI;
 
 #if !DEBUG
