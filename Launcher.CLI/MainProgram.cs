@@ -2,6 +2,7 @@
 using System.Net.Mime;
 using System.Reflection;
 using Launcher.Client;
+using Launcher.Client.Game;
 using Launcher.Client.Settings;
 using Launcher.LoaderAPI;
 
@@ -79,30 +80,7 @@ public class MainProgram
                 
                 break;
             case "play":
-                const string exePath = "/Game.exe";
-                var programPath = Config.GetField("game_path") + exePath;
-
-                Logger.Info($"Start the game...");
-                
-                if (!File.Exists(programPath))
-                {
-                    Logger.Warn($"Cannot find '{programPath}'.");
-                    // TODO: So, if we cannot find the game - we can trye
-                    // to run auto-update or something... Idk...
-                    return;
-                }
-                
-                var startInfo = new ProcessStartInfo
-                {
-                    FileName = programPath,
-                    UseShellExecute = false
-                };
-        
-                var process = new Process { StartInfo = startInfo };
-                process.Start();
-
-                Logger.Info($"File has been running!");
-                
+                var process = new GameProcess();
                 break;
             case "help":
                 var commandsText =
