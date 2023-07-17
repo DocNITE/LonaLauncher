@@ -11,3 +11,7 @@ LonaRPG Launcher project, base on C# for full OS implemintation.
 - [ ] Change game path
 - [ ] Mod's support
 
+# Note
+
+Bootstrap might check new laucnher version every app start. So, then, if detected new version (from Launcher.Version.txt in repository) - he download Laucnher.Content.zip (ofc from repository) and update three or more dll files
+
