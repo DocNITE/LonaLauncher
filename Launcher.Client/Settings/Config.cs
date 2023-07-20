@@ -40,7 +40,7 @@ public sealed class Config
 
     public static void Load()
     {
-        var restoreData = true;
+        const bool restoreData = true; // TODO: Dont forget remove it, for enable config update
         /* For now no need to config check. TODO: Need to make config update
         var version = Environment.GetEnvironmentVariable(GetEnvironmentName(ConfigVersionIdx), EnvironmentVariableTarget.User);
         var restoreData = false;
@@ -62,13 +62,13 @@ public sealed class Config
 
         // WARNING: MONKEY CODE
         // Yeah, in better way - we should use some generic spaces (not hardcode).
-        var link = "https://github.com/DocNITE/LonaData/releases/download/0.8.1.1/";
+        const string link = "https://github.com/DocNITE/LonaData/releases/download/0.8.1.1/";
 
         _ =
         new[] {
             new Field("game_version", "-1", restoreData),
             new Field("patch_version", "-1", restoreData),
-            new Field("game_path", "./Game", restoreData),
+            new Field("game_path", Static.GameFolderName, restoreData),
             new Field("game_url", link + "Game.zip", restoreData),
             new Field("patch_url", link + "Patch.zip", restoreData),
             new Field("patch_version_url", link + "Patch-Version.txt", restoreData),
