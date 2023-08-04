@@ -5,6 +5,8 @@ using Launcher.Client;
 using Launcher.Client.Game;
 using Launcher.Client.Settings;
 using Launcher.LoaderAPI;
+using Telegram.Bot;
+using Telegram.Bot.Types;
 
 namespace Launcher.CLI;
 
@@ -88,6 +90,19 @@ public class MainProgram
                     " update - Update all game files\n" +
                     " help - Get all commands list";
                 Logger.Info(commandsText);
+                break;
+            case "tg_get_users":
+                try
+                {
+                    TelegramBotClient bot = new TelegramBotClient("YOUR_BOT_TOKEN");
+                    ChatId chatId = new ChatId("@your_bot_username");
+                    Chat chat = await bot.GetChatAsync(chatId);
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e.Message + (e.Source) + (e.StackTrace));
+                    throw;
+                }
                 break;
             default:
                 Logger.Error("Not found command!");
